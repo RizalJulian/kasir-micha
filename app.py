@@ -1,3 +1,4 @@
+import random
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -117,7 +118,7 @@ with tab1:
         
         if st.button("🚀 PROSES BAYAR", type="primary", use_container_width=True):
             waktu = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            id_trx = f"TRX-{datetime.now().strftime('%d%H%M')}"
+            id_trx = f"TRX-{datetime.now().strftime('%H%M%S')}-{random.randint(100, 999)}"
             log_sheet = sheet.worksheet("Log_Transaksi")
             
             rows = []
