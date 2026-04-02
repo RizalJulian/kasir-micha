@@ -117,7 +117,7 @@ with tab1:
         metode = st.radio("Metode Bayar:", ["Cash", "QRIS", "Transfer"], horizontal=True)
         
         if st.button("🚀 PROSES BAYAR", type="primary", use_container_width=True):
-            waktu = datetime.now().strftime("%Y-%m-%d")
+            waktu = datetime.now().strftime("%d-%m-%Y")
             id_trx = f"TRX-{datetime.now().strftime('%H%M%S')}"
             log_sheet = sheet.worksheet("Log_Transaksi")
             
