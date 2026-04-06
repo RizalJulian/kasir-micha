@@ -117,7 +117,7 @@ with tab1:
         metode = st.radio("Metode Bayar:", ["Cash", "QRIS", "Transfer"], horizontal=True)
         
         if st.button("🚀 PROSES BAYAR", type="primary", use_container_width=True):
-            waktu = datetime.now().strftime("%d-%m-%Y")
+            waktu = datetime.now().strftime("%d/%m/%y")
             id_trx = f"TRX-{datetime.now().strftime('%H%M%S')}"
             log_sheet = sheet.worksheet("Log_Transaksi")
             
@@ -125,8 +125,7 @@ with tab1:
             for item in st.session_state.keranjang:
                 # Kolom: Timestamp, ID_Trx, ID_Item, Nama, Harga_Sat, Kuantitas, Total, Metode, Status
                 rows.append([waktu, id_trx, "COMBO", item['Nama_Item'], item['Harga_Satuan'], item['Qty'], item['Total_Harga'], metode, "Diproses"])
-            
-            log_sheet.append_rows(rows)
+            log_sheet.append_rows(rows, value_input_option='USER_ENTERED')
             st.session_state.keranjang = []; st.success("Tersimpan!"); st.rerun()
     else:
         st.info("Klik menu di atas untuk mulai.")
